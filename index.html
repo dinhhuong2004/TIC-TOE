@@ -6,23 +6,48 @@
     <link rel="icon" type="image/x-icon" href="images/OIP.webp">
     <link rel="stylesheet" href="css/index.css">
     <title style="color: aliceblue; font-size: 24px;">TIC - TOE</title>
+    <script
+      src="https://kit.fontawesome.com/3bfd3ce9e5.js"
+      crossorigin="anonymous"
+    ></script>
 </head>
 <body>
-    <main>
-        <div class="header">
+    <header>
             <h1>TIC - TOE</h1>
-        </div>
-
+    </header>
+    <main>
         <div class="button-container">
             <button id="newGameBtn">New Game</button>
             <button id="resetBtn">Reset</button>
         </div>
-        
-        <div class = "grid">
+        <div class = "grid" data-id="grid">
             <!-- Turn display -->
-            <div class = "display-turn"></div>
-            <div class = "display-turn"></div>
-            <div class = "display-turn"></div>
+            <div class = "display-turn" data-id="display-turn">
+                <i class="fa-solid fa-x turquoise"></i>
+                <p class="turquoise">Player 1, you're up!</p>
+            </div>
+            <!-- Dropdown Menu -->
+            <div class="menu">
+                <button class="menu-btn" data-id="menu-button">
+                    Menu
+                    <i class="fa-solid fa-caret-down"></i>  <!-- Icon hiển thị mũi tên xuống -->
+                </button>
+                <div class="menu-dropdown" style="display:none; position:absolute; background:#fff; border-radius:8px; min-width:120px; z-index:10;">
+                    <a>Reset</a>
+                    <a>New game</a>
+                </div>
+                <script>
+                    const menuBtn = document.querySelector('.menu-btn');
+                    const dropdown = document.querySelector('.menu-dropdown');
+                    menuBtn.onclick = function(e) {
+                        e.stopPropagation();
+                        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                    };
+                    document.body.onclick = function() {
+                        dropdown.style.display = 'none';
+                    };
+                </script>
+            </div>
             <!-- Game board -->
             <div id = "1" class = "square"></div>
             <div id = "2" class = "square"></div>
@@ -38,8 +63,20 @@
             <div class = "scoreboard"></div>
             <div class = "scoreboard"></div>
         </div>
-        
-        
     </main>
+    <footer>
+        <p>
+            Original project by
+            <a href="https://twitter.com/megfdev" style="color: green">@megfdev</a> and
+            <a href="https://twitter.com/Ivan00sto" style="color: green">@Ivan00Sto</a>
+        </p>
+
+        <p>
+            Refactored by
+            <a href="https://twitter.com/zg_dev" style="color: green"
+            >@zg_dev</a
+            >
+        </p>
+    </footer>
 </body>
 </html>

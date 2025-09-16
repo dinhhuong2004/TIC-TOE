@@ -1,4 +1,5 @@
 
+
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
 
 * {
@@ -11,56 +12,170 @@
 }
 html, body {
     height: 100%;
+    width: 100%;
     background-color: #183c4b;
+}
+body {
+    min-height: 100vh;
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
-} 
-
+    flex-direction: column;
+}
+main {
+    width: 100%;
+    align-items: center;
+    flex: 1 0 auto; /* chiếm không gian còn lại, đẩy footer xuống đáy */
+}
+header{
+    margin: 20px 0 10px 0;
+    width: 100%;
+    height: 60px;
+    align-items: center;
+    text-align: center;
+}
+footer{
+    margin-top: auto; /* đẩy footer xuống cuối trang khi nội dung ngắn */
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    padding: 16px 0;
+}
 h1 {
     font-size: 48px;
-    margin-bottom: 20px;
     font-weight: bold;
     color: #ffffff;
 }
+.button-container{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 #newGameBtn, #resetBtn {
-    padding: 10px 10px;
+    margin: 0px 10px 0 10px;
+    padding: 5px 10px 0 10px;
     font-size: 20px;
     font-style: bold;
     cursor: pointer;
     background-color: #4CAF50;
     color: rgb(12, 10, 10);
-    border-radius: 5px;
+    border-radius: 10px;
     &:hover {
         background-color: #266329;
     }
-    transition: background-color 0.3s ease;
+    transition: background-color 0.1s ease;
 }
 p {
-    font-size: 14px;
+    font-size: 18px;
     margin-bottom: 5px;
 }
-.button-container {
-    margin-bottom: 30px;
-}
 .grid {
-  display: grid;
-  grid-template-columns: repeat(3, 60px);
-  grid-template-rows: 60px repeat(3, 60px) 60px;
-  gap: 10px;
+    justify-content: center;    
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: 50px repeat(3, 60px) 60px;
+    gap: 10px;
 }
 
-.display-turn {
-    background-color: rgb(216, 179, 135);
-    /* grid-column-start: 1;
-    grid-column-end: 3; */
+@media (min-width: 768px) {
+  .grid {
+    margin-top: 40px;
+    justify-content: center;   
+    display: grid; 
+    width: 100%;
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: 50px repeat(3, 150px) 60px;
+    gap: 10px;
+  }
 }
-.square {
-    background-color: rgb(254, 255, 168);
-    .hover {
-        background-color: rgb(253, 220, 220);
+.display-turn {
+    padding-left: 20px;
+    border-radius: 5%; /* Thêm thuộc tính này để bo tròn các ô vuông */
+    /* background-color: rgb(216, 179, 135); */
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 20px;
+    color: rgb(247, 186, 186);
+}
+.display-turn i {
+    color: rgb(247, 186, 186);
+    animation: 0.5s ease-in-out turn-icon-animation;
+}
+@keyframes turn-icon-animation {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(20deg); }
+    100% { transform: rotate(0deg); }
+}
+.display-turn p {
+    font-size: 20px;
+    color: rgb(247, 186, 186);
+    animation: 0.5s ease-in-out turn-text-animation;
+}
+@keyframes turn-text-animation {
+    0% { 
+        /* Hiệu ứng xuất hiện cho chữ lượt chơi */
+        opacity: 0; /* Bắt đầu với độ mờ 0 */
+        transform: translateX(-20px); /* Di chuyển sang trái 20px */ transform: translateX(-20px);
+    }
+    100% { 
+        opacity: 1; /* Kết thúc với độ mờ 1 */
+        transform: translateX(0); /* Trở về vị trí ban đầu */
     }
 }
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.menu-btn{
+    background-color: #599c5c;
+    color: rgb(12, 10, 10);
+    font-size: 20px;
+    font-style: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    height: 80%;
+    width: 80%;
+    transition: background-color 0.1s ease;
+}
+.menu-btn:hover {
+    background-color: #82c983;
+    color: #0c0404;
+}
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  min-width: 120px;
+  z-index: 10;
+}
+
+.menu-dropdown a {
+  display: block;
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
+}
+
+.menu-dropdown a:hover {
+  background-color: #f0f0f0;
+}
+
+.square {
+    border-radius: 10%; /* Thêm thuộc tính này để bo tròn các ô vuông */
+    background-color: rgb(221, 221, 138);
+    cursor: pointer;
+    transition: background-color 0.1s ease; /* Thêm transition để hiệu ứng mượt hơn */
+}
+.square:hover {
+    background-color: #b4c957 !important; /* Thêm !important để ghi đè các style khác */
+}
 .scoreboard {
-    background-color: rgb(128, 235, 217);
+    border-radius: 5%; /* Thêm thuộc tính này để bo tròn các ô vuông */
+    background-color: rgb(23, 202, 172);
 }
