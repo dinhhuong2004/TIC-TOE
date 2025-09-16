@@ -12,11 +12,10 @@
 html, body {
     height: 100%;
     background-color: #183c4b;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
 } 
-body {
-    text-align: center;
-    margin-top: 50px;
-}
 
 h1 {
     font-size: 48px;
@@ -28,40 +27,40 @@ h1 {
     padding: 10px 10px;
     font-size: 20px;
     font-style: bold;
-    margin: 10px;
     cursor: pointer;
     background-color: #4CAF50;
     color: rgb(12, 10, 10);
     border-radius: 5px;
     &:hover {
-        background-color: #1c491e;
+        background-color: #266329;
     }
     transition: background-color 0.3s ease;
 }
 p {
-    font-size: 24px;
-    margin-bottom: 40px;
+    font-size: 14px;
+    margin-bottom: 5px;
 }
-
+.button-container {
+    margin-bottom: 30px;
+}
 .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-}
-.grid button {
-    width: 100px;
-    height: 100px;
-    font-size: 24px;
-} 
-.grid div {
-    width: 30px;
-    height: 30px;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #ffd8d8;
-    cursor: pointer;
+  display: grid;
+  grid-template-columns: repeat(3, 60px);
+  grid-template-rows: 60px repeat(3, 60px) 60px;
+  gap: 10px;
 }
 
-
+.display-turn {
+    background-color: rgb(216, 179, 135);
+    /* grid-column-start: 1;
+    grid-column-end: 3; */
+}
+.square {
+    background-color: rgb(254, 255, 168);
+    .hover {
+        background-color: rgb(253, 220, 220);
+    }
+}
+.scoreboard {
+    background-color: rgb(128, 235, 217);
+}
